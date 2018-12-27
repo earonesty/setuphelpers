@@ -279,11 +279,13 @@ def _lastest_tag():
     """Gets the latest git tag according to PEP440."""
 
     latest_tag = parse_version("0.0.0")
+    return_tag = "0.0.0"
     for tag in check_output(["git", "tag"]).splitlines():
         tag_version = parse_version(_decoded(tag))
         if tag_version > latest_tag:
             latest_tag = tag_version
-    return latest_tag.public
+            return_tag = tag
+    return return_tag
 
 
 def _tag_ref(git_tag):
