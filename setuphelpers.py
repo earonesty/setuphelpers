@@ -284,7 +284,7 @@ def _lastest_tag():
         tag_version = parse_version(_decoded(tag))
         if tag_version > latest_tag:
             latest_tag = tag_version
-            return_tag = tag
+            return_tag = _decoded(tag)
     return return_tag
 
 
